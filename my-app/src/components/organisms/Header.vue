@@ -2,7 +2,7 @@
   <v-app-bar
     app
     flat
-    elevation="6"
+    style="background: white;"
   >
     <BasicLayout>
       <v-row>
@@ -32,10 +32,11 @@
 
 <style lang="sass" scoped>
   h1
-    font-size: 28px
+    font-size: 34px
     color: #FFC107
-    text-stroke: 1.5px #311B92
-    -webkit-text-stroke: 1.5px #311B92
+    text-stroke: 2px #311B92
+    -webkit-text-stroke: 2px #311B92
+    padding: 0px
 </style>
 
 <script>

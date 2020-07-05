@@ -2,7 +2,7 @@
   <BasicLayout>
     <QuizSlider/><br><br>
     <p>クイズ数：100ドリル数：50回答数：200</p>
-    <Title2 :title2="'Popular Qiuzzes'"></Title2>
+    <Title2 :title2="'Popular Qiuzzes'" class="mt-4"></Title2>
     <v-row class="flex-nowrap" style="overflow-x: scroll;">
       <v-col
         v-for="card in cards"
@@ -45,6 +45,7 @@
                 <v-btn
                   color="deep-purple darken-4"
                   rounded
+                  depressed
                   dark
                   x-small
                 >
@@ -94,7 +95,7 @@
         </v-card>
       </v-col>
     </v-row>
-    <Title2 :title2="'Popular Tags'"></Title2>
+    <Title2 :title2="'Popular Tags'" class="mt-4"></Title2>
     <v-row class="flex-nowrap" style="overflow-x: scroll;">
       <v-col
         class="py-2 px-1"
@@ -111,7 +112,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <Title2 :title2="'New Quizzes'"></Title2>
+    <Title2 :title2="'New Quizzes'" class="mt-4"></Title2>
     <v-row class="flex-nowrap" style="overflow-x: scroll;">
       <v-col
         v-for="card in cards"
@@ -154,6 +155,7 @@
                 <v-btn
                   color="deep-purple darken-4"
                   rounded
+                  depressed
                   dark
                   x-small
                 >

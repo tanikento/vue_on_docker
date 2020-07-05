@@ -7,7 +7,7 @@
         cols="12"
       >
         <v-card
-          color="amber lighten-5"
+          color="white"
           flat
         >
           <v-row>
@@ -127,17 +127,20 @@
         md="6"
       >
         <v-btn
-          color="red darken-4"
-          outlined
-          x-large
+          color="amber"
+          elevation="6"
+          large
           block
-          link
         >
-          <router-link to="/quiz-answer">クイズに挑戦する</router-link>
+          <strong>クイズに挑戦する</strong>
         </v-btn>
       </v-col>
     </v-row>
-    <Title2 :title2="'Recommend Quiz'"></Title2>
+    <Title2
+      :title2="'Related Quiz'"
+      class="mt-4"
+    >
+    </Title2>
     <v-row class="flex-nowrap" style="overflow-x: scroll;">
       <v-col
         v-for="card in cards"
@@ -189,6 +192,44 @@
               </v-col>
             </v-row>
           </v-card-text>
+
+          <v-divider class="mx-4"></v-divider>
+
+          <v-list class="transparent">
+            <v-list-item
+              v-for="item in forecast"
+              :key="item.day"
+              class="py-0"
+              style="min-height: 24px;"
+            >
+              <v-list-item-title style="font-size: 14px;">{{ item.day }}</v-list-item-title>
+
+              <v-list-item-subtitle class="text-right">
+                {{ item.temp }}
+              </v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
+
+          <v-divider class="mx-4"></v-divider>
+
+          <v-card-actions>
+            <v-btn icon>
+              <v-icon>mdi-thumb-up</v-icon>
+            </v-btn>
+            100
+
+            <v-btn icon>
+              <v-icon>mdi-bookmark</v-icon>
+            </v-btn>
+            50
+
+            <v-spacer/>
+
+            <v-btn icon>
+              <v-icon>mdi-account-multiple</v-icon>
+            </v-btn>
+            120
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -199,35 +240,38 @@
   </BasicLayout>
 </template>
 
-  <style lang="sass" scoped>
-    .layout::-webkit-scrollbar
-      display: none
-    .row::-webkit-scrollbar
-      display: none
-    h3
-      padding: 20px
-      position: relative
-      font-size: 20px
-      width: 100%
-      text-align: justify
-    h3::before, h3::after
-      content: ''
-      width: 20px
-      height: 20px
-      position: absolute
-    h3::before
-      border-left: solid 2px #000000
-      border-top: solid 2px #000000
-      top: 0
-      left: 0
-    h3::after
-      border-right: solid 2px #000000
-      border-bottom: solid 2px #000000
-      bottom: 0
-      right: 0
-    .v-btn
-      text-transform: none
-  </style>
+<style lang="sass" scoped>
+  .layout::-webkit-scrollbar
+    display: none
+  .row::-webkit-scrollbar
+    display: none
+  h3
+    padding: 20px
+    position: relative
+    font-size: 20px
+    width: 100%
+    text-align: justify
+  h3::before, h3::after
+    content: ''
+    width: 20px
+    height: 20px
+    position: absolute
+  h3::before
+    border-left: solid 2px #000000
+    border-top: solid 2px #000000
+    top: 0
+    left: 0
+  h3::after
+    border-right: solid 2px #000000
+    border-bottom: solid 2px #000000
+    bottom: 0
+    right: 0
+  .v-btn
+    text-transform: none
+
+  .test:link, .test:visited, .test:hover, .test:active
+    color: blue
+</style>
 
 <script>
   import BasicLayout from '../templates/BasicLayout';

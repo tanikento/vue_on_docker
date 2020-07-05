@@ -53,6 +53,7 @@
                 <v-btn
                   color="deep-purple darken-4"
                   rounded
+                  depressed
                   dark
                   x-small
                 >

@@ -1,6 +1,7 @@
 <template>
   <BasicLayout>
     <Title2 :title2="'Ruby技術者認定試験 Silver対策'"></Title2>
+
     <v-row>
       <v-col
         v-for="(card, i) in cards"
@@ -11,7 +12,7 @@
         <v-divider/>
 
         <v-card
-          color="amber lighten-5"
+          color="white"
           flat
         >
           <v-card-title>
@@ -20,30 +21,40 @@
 
           <v-card-text>
             {{ card.overview }}
+
+            <v-row justify="center">
+              <v-col
+                v-for="answer in card.answers"
+                :key="answer.id"
+                cols="12"
+              >
+                <div style="font-size: 16px;">
+                  {{ answer.id }}. {{ answer.val }}
+                </div>
+              </v-col>
+            </v-row>
           </v-card-text>
 
           <v-row justify="center">
             <v-col
               v-for="answer in card.answers"
-              :key="answer"
-              cols="12"
-              sm="8"
-              md="6"
-              lg="6"
+              :key="answer.id"
+              cols="4"
             >
               <v-btn
-                color="red darken-4"
+                color="amber"
                 outlined
-                large
                 block
+                elevation="2"
               >
-                {{ answer }}
+                {{ answer.id }}
               </v-btn>
             </v-col>
           </v-row>
         </v-card>
       </v-col>
     </v-row>
+
     <v-row justify="center">
       <v-col
         cols="12"
@@ -51,15 +62,23 @@
         md="6"
       >
         <v-btn
-          color="red darken-4"
-          outlined
-          x-large
+          color="amber"
+          elevation="6"
+          large
           block
         >
-          回答を終了する
+          <strong>回答を終了する</strong>
         </v-btn>
       </v-col>
     </v-row>
+    <div class="button-radio">
+      <input id="bar1" type="radio" name="foo" value="bar1" checked>
+      <label for="bar1">ボタン１</label>
+      <input id="bar2" type="radio" name="foo" value="bar2">
+      <label for="bar2">ボタン２</label>
+      <input id="bar3" type="radio" name="foo" value="bar3">
+      <label for="bar3">ボタン３</label>
+    </div>
     <router-link to="/">Home</router-link> |
     <router-link to="/quizzes">Quiz</router-link> |
     <router-link to="/quiz-show">QuizShow</router-link> |
@@ -67,14 +86,26 @@
   </BasicLayout>
 </template>
 
-  <style lang="sass" scoped>
-    .layout::-webkit-scrollbar
-      display: none
-    .row::-webkit-scrollbar
-      display: none
-    h3
-      font-size: 22px
-  </style>
+<style lang="sass" scoped>
+  .layout::-webkit-scrollbar
+    display: none
+  .row::-webkit-scrollbar
+    display: none
+  h3
+    font-size: 22px
+
+  .button-radio input[type="radio"]
+    display: none
+
+  .button-radio label
+    display: inline-block
+    color: #fff
+    background-color: #2780e3
+    padding: 5px 10px
+
+  .button-radio input[type="radio"]:checked + label
+    background-color: #000
+</style>
 
 <script>
   import BasicLayout from '../templates/BasicLayout';
@@ -89,11 +120,11 @@
     data () {
       return {
         cards: [
-          { title: '下記の場合の出力結果は？', overview: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", answers: ["aaa", "bbb", "ccc", "ddd"] },
-          { title: '1 + 1 = ?', overview: "", answers: ["aaa", "bbb", "ccc", "ddd"] },
-          { title: '1 + 1 = ?', overview: "", answers: ["aaa", "bbb", "ccc", "ddd"] },
-          { title: '下記の場合の出力結果は？', overview: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", answers: ["aaa", "bbb", "ccc", "ddd"] },
-          { title: '1 + 1 = ?', overview: "", answers: ["aaa", "bbb", "ccc", "ddd"] },
+          { title: '下記の場合の出力結果は？', overview: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", answers: [{id: "A", val: "aaa"}, {id: "B", val: "bbb"}, {id: "C", val: "ccc"}] },
+          { title: '1 + 1 = ?', overview: "", answers: [{id: "A", val: "aaa"}, {id: "B", val: "bbb"}, {id: "C", val: "ccc"}] },
+          { title: '1 + 1 = ?', overview: "", answers: [{id: "A", val: "aaa"}, {id: "B", val: "bbb"}, {id: "C", val: "ccc"}] },
+          { title: '下記の場合の出力結果は？', overview: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", answers: [{id: "A", val: "aaa"}, {id: "B", val: "bbb"}, {id: "C", val: "ccc"}] },
+          { title: '1 + 1 = ?', overview: "", answers: [{id: "A", val: "aaa"}, {id: "B", val: "bbb"}, {id: "C", val: "ccc"}] },
         ],
         forecast: [
           { day: '設問数', icon: 'mdi-white-balance-sunny', temp: '10問' },
